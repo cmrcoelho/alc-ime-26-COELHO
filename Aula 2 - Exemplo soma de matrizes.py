@@ -1,0 +1,36 @@
+import numpy as np
+import os
+
+def matrix_product(matrix1, matrix2):
+    """
+    Função para calcular o produto de duas matrizes.
+    
+    Args:
+        matrix1 (np.ndarray): Primeira matriz.
+        matrix2 (np.ndarray): Segunda matriz.
+        
+    Returns:
+        np.ndarray: Produto das duas matrizes.
+    """
+
+    A = np.array(matrix1)
+    B = np.array(matrix2)
+
+    if A.ndim != 2 or B.ndim != 2:
+        raise ValueError("Ambas as entradas devem ser matrizes 2D.")
+
+    m, n = A.shape
+    p, q = B.shape
+
+    if n != p:
+        raise ValueError("O número de colunas da primeira matriz deve ser igual ao número de linhas da segunda matriz.")
+
+    return A @ B  # Usando o operador @ para multiplicação de matrizes
+
+if __name__ == "__main__":
+    os.system('cls' if os.name == 'nt' else 'clear')  # Limpa a tela do terminal
+    # Exemplo de uso da função
+    matrix_a = np.array([[1, 2], [3, 4]])
+    matrix_b = np.array([[5, 6], [7, 8]])
+    result = matrix_product(matrix_a, matrix_b)
+    print(result)
